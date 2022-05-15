@@ -1,14 +1,12 @@
-@extends('layouts.welcome')
-
-@section('title', '| Welcome')
+@extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="row">
-<div class="col-md-4 offset-md-4"><br><br>
-                <div class="card mt-4">
-                    <div class="card-body shadow">
+            <div class="card mt-4 shadow">
+                    <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
@@ -63,19 +61,15 @@
                                     @endif
                                     <hr>
 
-                                    <a class="btn btn-outline-success btn-block" href="{{ route('applicant.register') }}">
-                                        {{ __('Create New Applicant Account') }} >>
-                                    </a>
-                                    <a class="btn btn-outline-success btn-block" href="{{ route('company.register') }}">
-                                        {{ __('Create New Company Account') }} >>
+                                    <a class="btn btn-success btn-block" href="{{ route('register') }}">
+                                        {{ __('Create New Account') }}
                                     </a>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>
+        </div>
+    </div>
 </div>
-
-
 @endsection

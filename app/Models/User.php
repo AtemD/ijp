@@ -10,6 +10,10 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    const TYPE_ADMIN = 'admin';
+    const TYPE_COMPANY = 'company';
+    const TYPE_APPLICANT = 'applicant';
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -18,9 +22,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'user_type'
     ];
 
     /**

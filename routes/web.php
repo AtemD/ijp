@@ -15,4 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::get('/applicant/register', function () {
+    return view('auth.applicant.register');
+})->name('applicant.register');
+
+Route::get('/company/register', function () {
+    return view('auth.company.register');
+})->name('company.register');
+
