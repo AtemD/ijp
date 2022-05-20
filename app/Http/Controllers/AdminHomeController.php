@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
+
 // use App\Models\Job;
 // use Illuminate\Http\Request;
 
@@ -24,8 +26,8 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
-        // $jobs = Job::with('company')->paginate();
-        // dd('hit');
-        return view('admin/home', compact('jobs'));
+        $companies = Company::with('internships')->latest()->paginate();
+
+        return view('admin/home', compact('companies'));
     }
 }

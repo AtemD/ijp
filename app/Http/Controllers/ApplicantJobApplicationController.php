@@ -16,6 +16,19 @@ class ApplicantJobApplicationController extends Controller
     {
         $this->middleware(['auth']);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        // A list of all jobs the user applied to 
+        $job_applications = auth()->user()->jobApplications()->paginate();
+
+        return view('applicant/job-applications/index', compact('job_applications'));
+    }
     
     /**
      * Store a newly created resource in storage.
@@ -29,7 +42,6 @@ class ApplicantJobApplicationController extends Controller
         auth()->user()->jobApplications()->attach($job->id, ['company_id' => $job->company_id]);
 
         return back()->with('success', 'You have successfully applied to the job');
-        // auth()->user()->jobApplications()->attach($id);
     }
 
     /**

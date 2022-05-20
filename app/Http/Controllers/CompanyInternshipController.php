@@ -25,9 +25,8 @@ class CompanyInternshipController extends Controller
     public function index()
     {
         $company = auth()->user()->company()->firstOrFail();
-
-        $internships = $company->internships()->with('applicants')->paginate(10);
-// dd($internships->toArray());
+        $internships = $company->internships()->with('applicants')->latest()->paginate(10);
+        
         return view('company/internships/index', compact('company', 'internships'));
     }
 
@@ -38,7 +37,7 @@ class CompanyInternshipController extends Controller
      */
     public function create()
     {
-        //
+        return view('company/internships/create');
     }
 
     /**
@@ -49,7 +48,20 @@ class CompanyInternshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description'  => ['required', 'string', 'max:3000'],
+        ]);
+
+        $company = auth()->user()->company()->firstOrFail();
+
+        $company->internships()->create([
+            'company_id' => $company->id,
+            'title' => $validatedData['title'],
+            'description' => $validatedData['description'],
+        ]);
+    
+        return redirect()->route('company.internship.index')->with('success', 'New Internship Created Successfully');
     }
 
     /**

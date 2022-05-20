@@ -25,8 +25,8 @@ class CompanyJobController extends Controller
     public function index()
     {
         $company = auth()->user()->company()->firstOrFail();
-
-        $jobs = $company->jobs()->with('applicants')->paginate(10);
+// dd($company->id);
+        $jobs = $company->jobs()->with('applicants')->latest()->paginate(10);
 
         return view('company/jobs/index', compact('company', 'jobs'));
     }
@@ -38,7 +38,7 @@ class CompanyJobController extends Controller
      */
     public function create()
     {
-        //
+        return view('company/jobs/create');
     }
 
     /**
@@ -49,7 +49,20 @@ class CompanyJobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description'  => ['required', 'string', 'max:3000'],
+        ]);
+
+        $company = auth()->user()->company()->firstOrFail();
+
+        $company->jobs()->create([
+            'company_id' => $company->id,
+            'title' => $validatedData['title'],
+            'description' => $validatedData['description'],
+        ]);
+    
+        return redirect()->route('company.job.index')->with('success', 'New Job Created Successfully');
     }
 
     /**

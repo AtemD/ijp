@@ -11,9 +11,20 @@
 </div>
 
 <div class="container">
+    <div class="row mt-4">
+        <div class="col-md-12 d-flex justify-content-between">
+
+            <h3>Company Internships List</h3>
+            <div class="card-tools">
+                <a href="{{route('company.internship.create')}}" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Add New Internship
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="row mt-4"><br>
         <div class="col-md-12">
-            <h3>Company Internship List</h3>
             <table class="table table-hover text-nowrap">
                 <thead>
                     <tr>
