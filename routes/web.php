@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Applicant Controllers
 use App\Http\Controllers\ApplicantJobController;
+use App\Http\Controllers\ApplicantApplyToJobController;
 use App\Http\Controllers\ApplicantJobApplicationController;
 use App\Http\Controllers\ApplicantAccountController;
 use App\Http\Controllers\ApplicantHomeController;
@@ -75,7 +76,11 @@ Route::get('applicant/jobs/{job}', [ApplicantJobController::class, 'show'])
 // Route::put('applicant/jobs/{job}', [ApplicantJobController::class, 'update'])
 // ->name('applicant.job.update');
 // Route::delete('applicant/jobs/{job}', [ApplicantJobController::class, 'destroy'])
-// ->name('applicant.job.destroy');
+//     ->name('applicant.job.destroy');
+
+
+Route::get('applicant/jobs/{job}/apply', [ApplicantApplyToJobController::class, 'index'])
+    ->name('applicant.job.apply');
 
 // Applicant Account
 Route::get('applicant/account', [ApplicantAccountController::class, 'index'])
@@ -88,6 +93,8 @@ Route::get('applicant/job-applications', [ApplicantJobApplicationController::cla
     ->name('applicant.job-application.index');
 Route::post('applicant/job-applications', [ApplicantJobApplicationController::class, 'store'])
     ->name('applicant.job-application.store');
+Route::delete('applicant/job-applications/{id}', [ApplicantJobApplicationController::class, 'destroy'])
+    ->name('applicant.job-application.destroy');
 
 
 // COMPANY ROUTES
@@ -124,6 +131,8 @@ Route::delete('company/internships/{internship}', [CompanyInternshipController::
 
 Route::get('company/account', [CompanyAccountController::class, 'index'])
     ->name('company.account.index');
+Route::post('company/account', [CompanyAccountController::class, 'store'])
+    ->name('company.account.store');
 Route::put('company/account/{company}', [CompanyAccountController::class, 'update'])
     ->name('company.account.update');
 

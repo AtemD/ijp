@@ -25,6 +25,8 @@ class CreateJobApplicationsTable extends Migration
 
             $table->bigInteger('company_id')->nullable()->unsigned();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            
+            $table->string('cv_file');
 
             $table->string('status')->default(Job::STATUS_PENDING);
 

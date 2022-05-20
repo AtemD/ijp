@@ -13,6 +13,8 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
+                        <input type="hidden" name="user_type" value="{{\App\Models\User::TYPE_APPLICANT}}">
+
                         <div class="form-group row">
 
                             <div class="col-md-12 pb-1">

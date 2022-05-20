@@ -16,15 +16,28 @@
         <h1 class="jumbotron-heading">{{$job->title}}</h1>
         <h3>{{$job->company->name}}</h3>
         <p class="lead text-muted">{{$job->description}}</p>
-        <p>
-        <form method="POST" action="{{ route('applicant.job-application.store', $job->id) }}">
-            @csrf
 
-            <input type="hidden" name="job_id" value="{{$job->id}}">
-            <button type="submit" class="btn btn-primary">
-                Apply To Job
+        <p>
+
+            @if($has_applied == false)
+            <a href="{{ route('applicant.job.apply', $job->id) }}" class="btn btn-primary">Apply To Job</a>
+            @else
+
+        <div>
+            <form method="POST" action="{{ route('applicant.job-application.destroy', $job->id) }}">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="btn btn-sm btn-outline-danger">
+                    Delete Application
+                </button>
+            </form>
+            <br>
+            <button type="submit" class="btn btn-sm btn-success">
+                <span class="fas fa-check"></span> You Applied
             </button>
-        </form>
+        </div>
+        @endif
+
         </p>
     </div>
 </section>

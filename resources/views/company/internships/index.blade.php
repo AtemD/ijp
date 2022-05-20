@@ -85,7 +85,9 @@
                     </tr>
                     @empty
                     <tr>
-                        There are no internships posted yet by your university.
+                        <div class="alert alert-warning">
+                            <h5><i class="icon fas fa-exclamation-triangle"></i> There are no internships posted yet by your Company.</h5>
+                        </div>
                     </tr>
                     @endforelse
                 </tbody>

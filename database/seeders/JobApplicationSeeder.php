@@ -29,7 +29,10 @@ class JobApplicationSeeder extends Seeder
         $applicants->each(function($applicant) use ($jobs) {
             $jobs_to_apply_to = $jobs->random(mt_rand(0, 12));
             $jobs_to_apply_to->each(function($job_to_apply_to) use($applicant) {
-                $applicant->jobApplications()->attach($job_to_apply_to, ['company_id' => $job_to_apply_to->company_id]);
+                $applicant->jobApplications()->attach($job_to_apply_to, [
+                    'company_id' => $job_to_apply_to->company_id,
+                    'cv_file' => 'example_cv.txt'
+                ]);
             });
         });
         

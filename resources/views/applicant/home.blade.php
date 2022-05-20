@@ -22,14 +22,7 @@
                             <span class="fas fa-check"></span> You Applied
                         </button>
                         @else
-                        <form method="POST" action="{{ route('applicant.job-application.store', $job->id) }}">
-                            @csrf
-
-                            <input type="hidden" name="job_id" value="{{$job->id}}">
-                            <button type="submit" class="btn btn-sm btn-outline-primary">
-                                Apply
-                            </button>
-                        </form>
+                        <a href="{{ route('applicant.job.apply', $job->id) }}" class="btn btn-sm btn-outline-primary">Apply</a>
                         @endif
 
                         <a href="{{ route('applicant.job.show', $job->id) }}" class="card-link">See Details</a>

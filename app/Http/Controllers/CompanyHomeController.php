@@ -24,8 +24,11 @@ class CompanyHomeController extends Controller
      */
     public function index()
     {
-        $jobs = Job::with('company')->paginate();
-        // dd('hit');
-        return view('company/home', compact('jobs'));
+        // dd(auth()->user()->company()->count());
+        if(auth()->user()->company()->count() < 1){
+            return view('company/create');
+        }
+        
+        return view('company/home');
     }
 }

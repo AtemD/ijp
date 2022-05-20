@@ -57,7 +57,9 @@ class ApplicantJobController extends Controller
     public function show(Job $job)
     {
         $job = $job->load('company');
-        return view('applicant/jobs/show', compact('job'));
+        $has_applied = auth()->user()->jobApplications()->where('job_id', $job->id)->count() ? true: false;
+
+        return view('applicant/jobs/show', compact('job', 'has_applied'));
     }
 
     /**

@@ -85,7 +85,9 @@
                     </tr>
                     @empty
                     <tr>
-                        There are no jobs posted yet by your company.
+                        <div class="alert alert-warning">
+                            <h5><i class="icon fas fa-exclamation-triangle"></i> There are no jobs posted yet by your company.</h5>
+                        </div>
                     </tr>
                     @endforelse
                 </tbody>
