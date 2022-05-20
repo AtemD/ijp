@@ -18,9 +18,9 @@ class University extends Model
         'description',
     ];
     
-    public function applications()
+    public function internshipApplications()
     {
-        return $this->hasMany(Internship::class, 'internship_applications', 'university_id', 'internship_id')
+        return $this->belongsToMany(Internship::class, 'internship_applications', 'university_id', 'internship_id')
         ->withPivot('status');
     }
 }

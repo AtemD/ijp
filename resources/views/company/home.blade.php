@@ -31,7 +31,7 @@
                 <div class="icon">
                     <i class="fas fa-paper-plane"></i>
                 </div>
-                <a href="{{route('company.internship-application.index') }}" class="small-box-footer">
+                <a href="{{route('company.internship.index') }}" class="small-box-footer">
                     More info <i class="fas fa-arrow-circle-right"></i>
                 </a>
             </div>

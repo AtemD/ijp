@@ -76,7 +76,11 @@
                         </a>
 
                         <a class="dropdown-item nav-item" href="{{ route('company.account.index') }}">
-                            <i class="nav-icon fas fa-cogs mr-2"></i>{{ __('Account Settings') }}
+                            <i class="nav-icon fas fa-cogs mr-2"></i>{{ __('Company Settings') }}
+                        </a>
+
+                        <a class="dropdown-item nav-item" href="{{ route('company.user-account.index') }}">
+                            <i class="nav-icon fas fa-cogs mr-2"></i>{{ __('User Settings') }}
                         </a>
 
                         <hr>

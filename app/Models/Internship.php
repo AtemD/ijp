@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Internship extends Model
 {
+    const STATUS_ACCEPTED = 'accepted';
+    const STATUS_PENDING = 'pending';
+    const STATUS_REJECTED = 'rejected';
+
     use HasFactory;
 
     protected $fillable = [
@@ -21,7 +25,8 @@ class Internship extends Model
 
     public function applicants()
     {
-        return $this->belongsToMany(Applicant::class, 'job_applications', 'job_id', 'applicant_id')
-        ->withPivot('status');
+        return $this->belongsToMany(University::class, 'internship_applications', 'internship_id', 'university_id')
+            ->withPivot('id', 'status', 'company_id')
+            ->withTimestamps();
     }
 }

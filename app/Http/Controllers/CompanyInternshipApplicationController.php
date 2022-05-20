@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Internship;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CompanyJobApplicationController extends Controller
+class CompanyInternshipApplicationController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -36,32 +37,28 @@ class CompanyJobApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($id);
-        // dd('hit update job application');
-
-
         if ($request->has('accept')) {
-            DB::table('job_applications')
+            DB::table('internship_applications')
                 ->where('id', $id)
-                ->update(['status' => Job::STATUS_ACCEPTED]);
+                ->update(['status' => Internship::STATUS_ACCEPTED]);
 
-            return redirect()->back()->with('success', 'Your have successfully accepted the job applicant');
+            return redirect()->back()->with('success', 'Your have successfully accepted the internship applicant');
         }
 
         if ($request->has('reject')) {
-            DB::table('job_applications')
+            DB::table('internship_applications')
                 ->where('id', $id)
-                ->update(['status' => Job::STATUS_REJECTED]);
+                ->update(['status' => Internship::STATUS_REJECTED]);
 
-            return redirect()->back()->with('success', 'Your have successfully rejected the job applicant');
+            return redirect()->back()->with('success', 'Your have successfully rejected the internship applicant');
         }
 
         if ($request->has('pending')) {
-            DB::table('job_applications')
+            DB::table('internship_applications')
                 ->where('id', $id)
-                ->update(['status' => Job::STATUS_PENDING]);
+                ->update(['status' => Internship::STATUS_PENDING]);
 
-            return redirect()->back()->with('success', 'Your have successfully reverted the job applicant request status');
+            return redirect()->back()->with('success', 'Your have successfully reverted the internship applicant request status');
         }
 
         return redirect()->back()->with('error', 'There was a problem sending this place request');

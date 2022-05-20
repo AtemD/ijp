@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Internship;
-use App\Models\Internship;
 use Illuminate\Http\Request;
 
 class CompanyInternshipController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +27,7 @@ class CompanyInternshipController extends Controller
         $company = auth()->user()->company()->firstOrFail();
 
         $internships = $company->internships()->with('applicants')->paginate(10);
-
+// dd($internships->toArray());
         return view('company/internships/index', compact('company', 'internships'));
     }
 
@@ -52,7 +61,7 @@ class CompanyInternshipController extends Controller
     public function show(Internship $internship)
     {
         $internship = $internship->load('applicants');
-
+        
         return view('company/internships/show', compact('internship'));
     }
 
@@ -78,7 +87,7 @@ class CompanyInternshipController extends Controller
     {
         $validatedData = $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'description'  => ['required', 'string', 'max:255'],
+            'description'  => ['required', 'string', 'max:3000'],
         ]);
 
         $internship->update([

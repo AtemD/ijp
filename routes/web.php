@@ -9,6 +9,7 @@ use App\Http\Controllers\ApplicantHomeController;
 // Company Controller
 use App\Http\Controllers\CompanyHomeController;
 use App\Http\Controllers\CompanyAccountController;
+use App\Http\Controllers\CompanyUserAccountController;
 use App\Http\Controllers\CompanyJobController;
 use App\Http\Controllers\CompanyInternshipController;
 use App\Http\Controllers\CompanyJobApplicationController;
@@ -100,6 +101,13 @@ Route::delete('company/internships/{internship}', [CompanyInternshipController::
 
 Route::get('company/account', [CompanyAccountController::class, 'index'])
     ->name('company.account.index');
+Route::put('company/account/{company}', [CompanyAccountController::class, 'update'])
+    ->name('company.account.update');
+
+Route::get('company/user-account', [CompanyUserAccountController::class, 'index'])
+    ->name('company.user-account.index');
+Route::put('company/user-account/{user}', [CompanyUserAccountController::class, 'update'])
+    ->name('company.user-account.update');
 
 // job applications
 Route::get('company/job-applications', [CompanyJobApplicationController::class, 'index'])
@@ -109,6 +117,8 @@ Route::put('company/job-applications/{id}', [CompanyJobApplicationController::cl
 // Internship applications
 Route::get('company/internship-applications', [CompanyInternshipApplicationController::class, 'index'])
     ->name('company.internship-application.index');
+Route::put('company/internship-applications/{id}', [CompanyInternshipApplicationController::class, 'update'])
+    ->name('company.internship-application.update');
 
 // UNIVERSITY ROUTES
 // ...................................................................................................................

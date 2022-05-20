@@ -15,7 +15,7 @@ class ApplicantHomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware(['auth', 'company.setup']);
+        $this->middleware(['auth']);
     }
 
     /**

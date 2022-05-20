@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 class CompanyJobController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -77,7 +87,7 @@ class CompanyJobController extends Controller
     {
         $validatedData = $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'description'  => ['required', 'string', 'max:255'],
+            'description'  => ['required', 'string', 'max:3000'],
         ]);
 
         $job->update([
