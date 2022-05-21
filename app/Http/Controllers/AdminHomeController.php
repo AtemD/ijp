@@ -26,8 +26,10 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
-        $companies = Company::with('internships')->latest()->paginate();
+        $companies_count = Company::count();
+        $university = auth()->user()->university()->firstOrFail();
+        $internship_applications_count = $university->internshipApplications()->count();
 
-        return view('admin/home', compact('companies'));
+        return view('admin/home', compact('companies_count', 'internship_applications_count'));
     }
 }

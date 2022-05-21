@@ -22,6 +22,7 @@ use App\Http\Controllers\CompanyInternshipApplicationController;
 // Admin or University Controller
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminInternshipController;
+use App\Http\Controllers\AdminApplyToInternshipController;
 use App\Http\Controllers\AdminCompanyController;
 use App\Http\Controllers\AdminInternshipApplicationController;
 use App\Http\Controllers\AdminAccountController;
@@ -154,25 +155,50 @@ Route::put('company/internship-applications/{id}', [CompanyInternshipApplication
 
 // UNIVERSITY ROUTES
 // ...................................................................................................................
-Route::get('admin/internships', [AdminInternshipController::class, 'index'])
-    ->name('admin.internships.index');
 
 // Admin companies
 Route::get('admin/company', [AdminCompanyController::class, 'index'])
     ->name('admin.company.index');
+Route::get('admin/company/create', [AdminCompanyController::class, 'create'])
+    ->name('admin.company.create');
+Route::post('admin/company', [AdminCompanyController::class, 'store'])
+    ->name('admin.company.store');
+Route::get('admin/company/{company}/edit', [AdminCompanyController::class, 'edit'])
+    ->name('admin.company.edit');
 Route::get('admin/company/{company}', [AdminCompanyController::class, 'show'])
     ->name('admin.company.show');
+Route::put('admin/company/{company}', [AdminCompanyController::class, 'update'])
+    ->name('admin.company.update');
+Route::delete('admin/company/{company}', [AdminCompanyController::class, 'destroy'])
+    ->name('admin.company.destroy');
 
-// Admin applied internships
+// Admin Internship application
 Route::get('admin/internship-application', [AdminInternshipApplicationController::class, 'index'])
     ->name('admin.internship-application.index');
 Route::post('admin/internship-application', [AdminInternshipApplicationController::class, 'store'])
     ->name('admin.internship-application.store');
+Route::delete('admin/internship-applications/{id}', [AdminInternshipApplicationController::class, 'destroy'])
+    ->name('admin.internship-application.destroy');
+
+Route::get('admin/internships', [AdminInternshipController::class, 'index'])
+    ->name('admin.internships.index');
+Route::get('admin/internships/{internship}', [adminInternshipController::class, 'show'])
+    ->name('admin.internship.show');
+
+
+Route::get('admin/internships/{internship}/apply', [AdminApplyToInternshipController::class, 'index'])
+    ->name('admin.internship.apply');
 
 // Admin university account
 Route::get('admin/account', [AdminAccountController::class, 'index'])
     ->name('admin.account.index');
+Route::post('admin/account', [AdminAccountController::class, 'store'])
+    ->name('admin.account.store');
+Route::put('admin/account/{university}', [AdminAccountController::class, 'update'])
+    ->name('admin.account.update');
 
 // Admin user account
 Route::get('admin/user-account', [AdminUserAccountController::class, 'index'])
     ->name('admin.user-account.index');
+Route::put('admin/user-account/{user}', [AdminUserAccountController::class, 'update'])
+    ->name('admin.user-account.update');

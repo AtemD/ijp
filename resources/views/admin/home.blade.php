@@ -7,7 +7,7 @@
             <!-- small card -->
             <div class="small-box">
                 <div class="inner">
-                    <h3>176</h3>
+                    <h3>{{$companies_count}}</h3>
 
                     <p>Companies</p>
                 </div>
@@ -15,7 +15,7 @@
                     <i class="fa-solid fa-briefcase"></i>
                 </div>
 
-                <a href="{{ route('company.job.index') }}" class="small-box-footer">
+                <a href="{{ route('admin.company.index') }}" class="small-box-footer">
                     More info <i class="fas fa-arrow-circle-right"></i>
                 </a>
             </div>
@@ -24,14 +24,14 @@
             <!-- small card -->
             <div class="small-box">
                 <div class="inner">
-                    <h3>16</h3>
+                    <h3>{{$internship_applications_count}}</h3>
 
-                    <p>Posted Internship</p>
+                    <p>Internships Applied To</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-paper-plane"></i>
                 </div>
-                <a href="{{route('company.internship.index') }}" class="small-box-footer">
+                <a href="{{ route('admin.internship-application.index') }}" class="small-box-footer">
                     More info <i class="fas fa-arrow-circle-right"></i>
                 </a>
             </div>

@@ -24,12 +24,14 @@ class InternshipApplicationSeeder extends Seeder
 
         $universities = University::all();
         $internships = Internship::with('company')->get();
-        // dd($internships->first()->toArray());
 
         $universities->each(function($university) use ($internships) {
             $internships_to_apply_to = $internships->random(mt_rand(0, 12));
             $internships_to_apply_to->each(function($internship_to_apply_to) use($university) {
-                $university->internshipApplications()->attach($internship_to_apply_to->id, ['company_id' => $internship_to_apply_to->company_id]);
+                $university->internshipApplications()->attach($internship_to_apply_to->id, [
+                    'company_id' => $internship_to_apply_to->company_id,
+                    'internship_letter' => 'example_internship_letter.txt'
+                ]);
             });
         });
         

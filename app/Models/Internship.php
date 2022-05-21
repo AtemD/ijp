@@ -23,7 +23,7 @@ class Internship extends Model
         return $this->belongsTo(Company::class);
     }
 
-    public function applicants()
+    public function universityApplicants()
     {
         return $this->belongsToMany(University::class, 'internship_applications', 'internship_id', 'university_id')
             ->withPivot('id', 'status', 'company_id')

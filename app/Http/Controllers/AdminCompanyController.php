@@ -58,8 +58,17 @@ class AdminCompanyController extends Controller
      */
     public function show(Company $company)
     {
-        $company = $company->load('internships');
-        return view('admin/companies/show', compact('company'));
+        $internships = $company->internships()->paginate();
+
+        $university = auth()->user()->university()->firstOrFail();
+
+        $university = $university->load([
+            'internshipApplications' => function ($query) use ($company) {
+                $query->wherePivot('company_id', $company->id);
+            }
+        ]);
+        
+        return view('admin/companies/show', compact('company', 'university', 'internships'));
     }
 
     /**
@@ -70,7 +79,7 @@ class AdminCompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return view('admin/companies/edit', compact('company'));
     }
 
     /**
@@ -82,7 +91,15 @@ class AdminCompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $validatedData = $request->validate([
+            'status' => ['required'],
+        ]);
+
+        $company->update([
+            'status' => $validatedData['status'],
+        ]);
+    
+        return back()->with('success', 'The Company Status Has Been Updated Successfully');
     }
 
     /**

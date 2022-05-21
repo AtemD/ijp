@@ -25,7 +25,9 @@ class CreateInternshipApplicationsTable extends Migration
 
             $table->bigInteger('company_id')->nullable()->unsigned();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-
+            
+            $table->string('internship_letter');
+            
             $table->string('status')->default(Internship::STATUS_PENDING);
 
             $table->timestamps();
