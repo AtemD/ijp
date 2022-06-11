@@ -34,7 +34,7 @@
     <div class="container">
 
         <div class="row">
-            @forelse($internship->applicants as $university)
+            @forelse($internship->universityApplicants as $university)
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <div class="card-body">

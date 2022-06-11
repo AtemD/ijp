@@ -41,7 +41,7 @@
                         <th scope="row">{{$internship->id}}</th>
                         <th scope="row">{{$internship->title}}</th>
                         <td class="text-wrap">{{$internship->description}}</td>
-                        <td>{{$internship->applicants->count()}}</td>
+                        <td>{{$internship->universityApplicants->count()}}</td>
                         <td class="project-actions">
                             <a class="btn btn-primary btn-sm" href="{{ route('company.internship.show', $internship->id) }}" role="button">
                                 <i class="fas fa-folder"></i>

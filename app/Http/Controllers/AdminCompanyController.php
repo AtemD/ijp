@@ -110,6 +110,8 @@ class AdminCompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+
+        return back()->with('success', 'The Company Has been Deleted Successfully');
     }
 }

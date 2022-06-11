@@ -25,7 +25,7 @@ class CompanyInternshipController extends Controller
     public function index()
     {
         $company = auth()->user()->company()->firstOrFail();
-        $internships = $company->internships()->with('applicants')->latest()->paginate(10);
+        $internships = $company->internships()->with('universityApplicants')->latest()->paginate(10);
         
         return view('company/internships/index', compact('company', 'internships'));
     }
@@ -72,7 +72,7 @@ class CompanyInternshipController extends Controller
      */
     public function show(Internship $internship)
     {
-        $internship = $internship->load('applicants');
+        $internship = $internship->load('universityApplicants');
         
         return view('company/internships/show', compact('internship'));
     }
