@@ -32,9 +32,8 @@ class ApplicantHomeController extends Controller
                 $query->where('status', $status);
             }
         )->latest()->paginate();
-        // dd($jobs->count());
+
         $job_applications = auth()->user()->jobApplications()->get()->pluck('pivot.job_id');
-        // dd($job_applications->toArray());
 
         return view('applicant/home', compact('jobs', 'job_applications'));
     }

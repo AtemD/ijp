@@ -24,7 +24,7 @@ class AdminCompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::with('internships')->paginate();
+        $companies = Company::with('internships')->latest()->paginate();
         
         return view('admin/companies/index', compact('companies'));
     }
