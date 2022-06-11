@@ -79,7 +79,6 @@ Route::get('applicant/jobs/{job}', [ApplicantJobController::class, 'show'])
 // Route::delete('applicant/jobs/{job}', [ApplicantJobController::class, 'destroy'])
 //     ->name('applicant.job.destroy');
 
-
 Route::get('applicant/jobs/{job}/apply', [ApplicantApplyToJobController::class, 'index'])
     ->name('applicant.job.apply');
 
@@ -114,6 +113,9 @@ Route::put('company/jobs/{job}', [CompanyJobController::class, 'update'])
     ->name('company.job.update');
 Route::delete('company/jobs/{job}', [CompanyJobController::class, 'destroy'])
     ->name('company.job.destroy');
+
+Route::get('applicant/{user}/downloadcv/{file}', [ApplicantJobController::class, 'downloadCv'])
+    ->name('applicant.job.downloadcv');
 
 Route::get('company/internships', [CompanyInternshipController::class, 'index'])
     ->name('company.internship.index');

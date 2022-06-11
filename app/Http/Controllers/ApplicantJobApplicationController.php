@@ -49,7 +49,7 @@ class ApplicantJobApplicationController extends Controller
 
         $cv_file_path = public_path('/uploads/cv_files');
         
-        $cv_file->move($cv_file_path . '/' . $cv_file_name);
+        $cv_file->move($cv_file_path, $cv_file_name);
 
         $job = Job::where('id', $request->job_id)->firstOrFail();
 

@@ -55,6 +55,11 @@
                         </div>
                         <p class="card-text text-muted">{{$applicant->email}}</p>
                         <p class="card-text">{{$applicant->username}} applied for the job {{$job->title}}.</p>
+                        <p>
+                            <a href="{{ route('applicant.job.downloadcv', ['user' => $applicant->id, 'file' => $applicant->pivot->cv_file])}}" class="btn btn-sm btn-outline-primary">
+                                download CV
+                            </a>
+                        </p>
                         <div class="d-flex justify-content-between align-items-center">
                             <!-- <button type="button" class="btn btn-sm btn-outline-danger">Reject</button> -->
                             <!-- <button type="button" class="btn btn-sm btn-outline-primary">Accept</button> -->

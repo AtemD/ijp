@@ -74,7 +74,7 @@ class CompanyJobController extends Controller
     public function show(Job $job)
     {
         $job = $job->load('applicants');
-
+// dd($job->toArray());
         return view('company/jobs/show', compact('job'));
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ApplicantJobController extends Controller
@@ -16,7 +17,7 @@ class ApplicantJobController extends Controller
     {
         $this->middleware(['auth']);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -57,7 +58,7 @@ class ApplicantJobController extends Controller
     public function show(Job $job)
     {
         $job = $job->load('company');
-        $has_applied = auth()->user()->jobApplications()->where('job_id', $job->id)->count() ? true: false;
+        $has_applied = auth()->user()->jobApplications()->where('job_id', $job->id)->count() ? true : false;
 
         return view('applicant/jobs/show', compact('job', 'has_applied'));
     }
@@ -94,5 +95,16 @@ class ApplicantJobController extends Controller
     public function destroy(Job $job)
     {
         //
+    }
+
+    public function downloadCv(User $user, $file_name)
+    {
+        // dd('hit');
+        // dd($file_name);
+        // dd($user->toArray());
+
+        $file_path = public_path('uploads/cv_files/' . $file_name);
+        // dd($file_path);
+        return response()->download($file_path);
     }
 }

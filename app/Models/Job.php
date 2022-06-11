@@ -26,7 +26,7 @@ class Job extends Model
     public function applicants()
     {
         return $this->belongsToMany(Applicant::class, 'job_applications', 'job_id', 'applicant_id')
-            ->withPivot('id', 'status')
+            ->withPivot('id', 'status', 'cv_file', 'company_id')
             ->withTimestamps();
     }
 }
