@@ -13,7 +13,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title mb-0">{{$job->title}}</h5><br>
-                    <p class="mb-2 text-muted card-text"><small>{{$job->company->name}}</small></p>
+                    <p class="mb-2 text-muted card-text"><small>{{$job->company->name}} 
+                    <span class="badge badge-secondary">{{$job->company->status}}</span>
+                    </small></p>
                     <p class="card-text">{!! mb_substr($job->description, 0,100) !!}</p>
 
                     <div class="d-flex justify-content-between">

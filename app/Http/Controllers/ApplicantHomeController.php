@@ -25,12 +25,14 @@ class ApplicantHomeController extends Controller
      */
     public function index()
     {
-        $jobs = Job::with([
-            'company' => function($query) {
-                $query->where('status', Company::STATUS_ACCEPTED);
+        $status = Company::STATUS_ACCEPTED;
+
+        $jobs = Job::whereHas(
+            'company', function($query) use($status) {
+                $query->where('status', $status);
             }
-        ])->paginate();
-        
+        )->latest()->paginate();
+        // dd($jobs->count());
         $job_applications = auth()->user()->jobApplications()->get()->pluck('pivot.job_id');
         // dd($job_applications->toArray());
 
