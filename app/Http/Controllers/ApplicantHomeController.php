@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\Job;
 // use Illuminate\Http\Request;
 
@@ -24,7 +25,11 @@ class ApplicantHomeController extends Controller
      */
     public function index()
     {
-        $jobs = Job::with('company')->paginate();
+        $jobs = Job::with([
+            'company' => function($query) {
+                $query->where('status', Company::STATUS_ACCEPTED);
+            }
+        ])->paginate();
         
         $job_applications = auth()->user()->jobApplications()->get()->pluck('pivot.job_id');
         // dd($job_applications->toArray());
