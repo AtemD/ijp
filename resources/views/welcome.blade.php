@@ -80,8 +80,9 @@
                 <small class="text-muted">
                     *If you are a company, you must first call or email us in order for us to verify if you are a legal company. Upon contacting us, we will use your provided information and decide whether to verify you or not.
                 </small>
-                <h6>Email Us At:</h6>
-                <p>natnaelabate@gmail.com or mesfintg@gmail.com</p>
+                <h6 class="font-weight-light">Email Us At:</h6>
+                <p>hawaassaUniverisity@hawassa.com</p>
+				<p>+251999485763</p>
             </div>
         </div>
     </div>
