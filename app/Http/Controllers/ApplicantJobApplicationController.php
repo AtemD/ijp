@@ -45,7 +45,8 @@ class ApplicantJobApplicationController extends Controller
         ]);
 
         $cv_file = $request->file('cv_file');
-        $cv_file_name = auth()->id() . '_'. time() . '.' . $request->file('cv_file')->getClientOriginalName();
+        $user_name = str_replace(' ', '_', auth()->user()->username);
+        $cv_file_name = $user_name . '_'. auth()->id() . '_'. time() . '.' . $request->file('cv_file')->getClientOriginalName();
 
         $cv_file_path = public_path('/uploads/cv_files');
         
