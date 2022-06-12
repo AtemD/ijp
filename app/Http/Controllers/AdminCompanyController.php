@@ -58,7 +58,7 @@ class AdminCompanyController extends Controller
      */
     public function show(Company $company)
     {
-        $internships = $company->internships()->paginate();
+        $internships = $company->internships()->latest()->paginate();
 
         $university = auth()->user()->university()->firstOrFail();
 
