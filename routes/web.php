@@ -117,6 +117,9 @@ Route::delete('company/jobs/{job}', [CompanyJobController::class, 'destroy'])
 Route::get('applicant/{user}/downloadcv/{file}', [ApplicantJobController::class, 'downloadCv'])
     ->name('applicant.job.downloadcv');
 
+Route::get('university/{university}/downloadinternshipletter/{file}', [AdminInternshipController::class, 'downloadInternshipLetter'])
+    ->name('admin.internship.downloadinternshipletter');
+
 Route::get('company/internships', [CompanyInternshipController::class, 'index'])
     ->name('company.internship.index');
 Route::get('company/internships/create', [CompanyInternshipController::class, 'create'])

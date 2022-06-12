@@ -52,7 +52,8 @@ class AdminInternshipApplicationController extends Controller
 
         $internship_letter_path = public_path('/uploads/internship_letters');
         
-        $internship_letter->move($internship_letter_path . '/' . $internship_letter_name);
+        // $cv_file->move($cv_file_path, $cv_file_name);
+        $internship_letter->move($internship_letter_path, $internship_letter_name);
 
         $internship = Internship::where('id', $request->internship_id)->firstOrFail();
         $internship_company = $internship->load('company');

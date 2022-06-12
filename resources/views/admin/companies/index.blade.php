@@ -4,7 +4,7 @@
 <div class="container mt-4">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-white pl-0">
-            <li class="breadcrumb-item"><a href="{{ route('company.home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Companies</li>
         </ol>
     </nav>

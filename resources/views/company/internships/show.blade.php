@@ -55,6 +55,11 @@
                         </div>
                         <p class="card-text text-muted">{{$university->email}}</p>
                         <p class="card-text">{{$university->name}} applied for the internship position {{$internship->title}}.</p>
+                        <p>
+                            <a href="{{ route('admin.internship.downloadinternshipletter', ['university' => $university, 'file' => $university->pivot->internship_letter])}}" class="btn btn-sm btn-outline-primary">
+                                download Internship Letter
+                            </a>
+                        </p>
                         <div class="d-flex justify-content-between align-items-center">
                             <!-- <button type="button" class="btn btn-sm btn-outline-danger">Reject</button> -->
                             <!-- <button type="button" class="btn btn-sm btn-outline-primary">Accept</button> -->

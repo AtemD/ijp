@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Internship;
 use App\Models\Job;
+use App\Models\University;
 use Illuminate\Http\Request;
 
 class AdminInternshipController extends Controller
@@ -57,7 +58,7 @@ class AdminInternshipController extends Controller
      */
     public function show(Internship $internship)
     {
-        $internship = $internship->load('company');
+        $internship = $internship->latest()->load('company');
         $university = auth()->user()->university()->firstOrFail();
 
         $has_applied = $university->internshipApplications()->where('internship_id', $internship->id)->count() ? true: false;
@@ -97,5 +98,16 @@ class AdminInternshipController extends Controller
     public function destroy(Internship $internship)
     {
         //
+    }
+
+    public function downloadInternshipLetter(University $university, $file_name)
+    {
+        // dd('hit');
+        // dd($file_name);
+        // dd($user->toArray());
+
+        $file_path = public_path('uploads/internship_letters/' . $file_name);
+        // dd($file_path);
+        return response()->download($file_path);
     }
 }
