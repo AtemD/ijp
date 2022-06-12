@@ -6,6 +6,9 @@
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="row">
+    <div class="col-md-8 offset-md-2 mt-4 mr-4">
+        <h3 class="text-capitalize">Coordinated Web Based Internship and Job Portal Web Application</h3>
+    </div>
     <div class="col-md-4 offset-md-4"><br><br>
         <div class="card mt-4">
             <div class="card-body shadow">
